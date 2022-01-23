@@ -16,7 +16,6 @@ function addFloors() {
   for (let i = 0; i < floorCount; i++) {
     const floorEl = document.createElement("div");
     floorEl.classList.add("dynamic-floor");
-    // floorEl.setAttribute("data-floor", floorCount - i);
     floorEl.innerHTML = `
                     <div class="btn-container">
                         <button class="floor floor-up" data-floor=${
@@ -35,14 +34,25 @@ function addFloors() {
 }
 
 function floorChange(targetFloor) {
+  reset();
   const elevatorEl = document.querySelector(".elevator");
-  const currentFloor = elevatorEl.dataset.currentfloor;
-  if (targetFloor == -1) {
+  const currentFloor = +elevatorEl.dataset.currentfloor;
+  targetFloor = +targetFloor;
+  console.log(targetFloor, "target", currentFloor, "current");
+  if (targetFloor < 0) {
     targetFloor = document.querySelectorAll(".floor-down").length;
   }
-  let duration = (targetFloor - currentFloor) * 2;
+
+  let duration = 0;
+
+  if (currentFloor < targetFloor) {
+    duration = (targetFloor - currentFloor) * 2;
+  } else {
+    duration = (currentFloor - targetFloor) * 2;
+  }
+  console.log(duration, "1");
   elevatorEl.setAttribute("data-currentfloor", targetFloor);
-  elevatorEl.style.transition = "bottom " + duration + "s linear";
+  elevatorEl.style.transition = `bottom ${duration}s linear`;
   elevatorEl.style.bottom = targetFloor * 11 + "rem";
 }
 
@@ -63,7 +73,6 @@ function handleBtnClick() {
       floorChange(targetFloor);
     });
   });
-  reset();
 }
 
 function reset() {

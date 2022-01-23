@@ -53,6 +53,8 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 3px 4px 2px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
 .static-floor {
@@ -73,6 +75,7 @@ header {
 .btn-container {
   display: flex;
   flex-direction: column;
+  transition: all 0.5s ease;
 }
 
 .btn-container > button {
@@ -86,6 +89,7 @@ header {
   font-family: inherit;
   margin: 10px;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .floor-btn {
@@ -99,6 +103,7 @@ header {
   font-family: inherit;
   margin: 10px;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 /* Elevator */
