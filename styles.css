@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e1a6ff;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 80vh;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+header {
+  margin: 2rem 0;
+}
+
+#user-input {
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 18px;
+}
+
+#user-input:focus,
+#user-input:hover {
+  outline-color: #e1a6ff;
+}
+.submit {
+  padding: 0.5rem 1rem;
+  outline: none;
+  color: #272429;
+  border: none;
+  background-color: aliceblue;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+/* Lift Container */
+
+.lift-container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.static-floor {
+  padding: 3rem 1rem;
+  border-top: 3px solid #e1a6ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dynamic-floor {
+  padding: 2rem 1rem;
+  border-top: 3px solid #e1a6ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-container > button {
+  padding: 0.5rem 1rem;
+  outline: none;
+  color: #272429;
+  border: none;
+  background-color: rgb(240, 214, 255);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.floor-btn {
+  padding: 0.5rem 1rem;
+  outline: none;
+  color: #272429;
+  border: none;
+  background-color: rgb(240, 214, 255);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* Elevator */
+
+.elevator {
+  width: 50px;
+  height: 100px;
+  background-color: rgb(227, 128, 240);
+  position: relative;
+  /* top: 0px; */
+}

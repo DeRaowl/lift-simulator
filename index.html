@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lift Simulator</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <input type="number" id="user-input" placeholder="Enter number of floors">
+            <!-- <input type="number" class="user-input lifts-count" placeholder="Enter number of lifts"> -->
+            <button class="submit">Add</button>
+        </header>
+
+        <div class="lift-container">
+            <div class="top-floor static-floor">
+                <button class="floor floor-down floor-btn" data-floor=-1>Down</button>
+                <p>Top Floor</p>
+            </div>
+            <div class="floors-container">
+
+            </div>
+            <div class="ground-floor static-floor">
+                <button class="floor floor-up floor-btn" data-floor=0>up</button>
+                <div class="elevator" data-currentfloor=0></div>
+                <p>Ground Floor</p>
+            </div>
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+</html>
