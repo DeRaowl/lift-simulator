@@ -12,26 +12,28 @@
 <body>
     <main class="container">
         <header>
-            <input type="number" id="user-input" placeholder="Enter number of floors">
-            <!-- <input type="number" class="user-input lifts-count" placeholder="Enter number of lifts"> -->
-            <button class="submit">Add</button>
+            <div>
+                <input type="number" id="user-input" placeholder="Enter number of floors">
+                <button class="submit">Add</button>
+            </div>
+
         </header>
 
         <div class="lift-container">
-            <div class="top-floor static-floor">
-                <button class="floor floor-down floor-btn" data-floor=-1>Down</button>
-                <p>Top Floor</p>
+            <div class="github">
+                <a href="https://github.com/DeRaowl/lift-simulator" target="_blank">Source Code</a>
             </div>
             <div class="floors-container">
 
             </div>
             <div class="ground-floor static-floor">
-                <button class="floor floor-up floor-btn" data-floor=0>up</button>
+                <button class="floor floor-up floor-btn ground-floor-btn" data-floor=0>up</button>
                 <div class="elevator" data-currentfloor=0></div>
                 <p>Ground Floor</p>
             </div>
         </div>
     </main>
+
     <script src="./script.js"></script>
 </body>
 

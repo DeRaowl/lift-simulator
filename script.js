@@ -6,13 +6,25 @@ const submit = document.querySelector(".submit");
 
 let floorCount = 0;
 let maxFloor = 0;
+let queue = [];
 
 /*Functions */
 
 function addFloors() {
   floorContainer.innerHTML = null;
-  maxFloor = floorCount + 2;
-  floorCount = userInput.value;
+  floorCount = +userInput.value;
+  maxFloor = +floorCount + 2;
+
+  const topFloorEl = document.createElement("div");
+  topFloorEl.classList.add("top-floor");
+  topFloorEl.classList.add("static-floor");
+  topFloorEl.innerHTML = `
+                <button class="floor floor-down floor-btn top-floor-btn" data-floor=${
+                  maxFloor - 1
+                }>Down</button>
+                <p>Top Floor</p>
+            `;
+  floorContainer.append(topFloorEl);
   for (let i = 0; i < floorCount; i++) {
     const floorEl = document.createElement("div");
     floorEl.classList.add("dynamic-floor");
@@ -28,38 +40,45 @@ function addFloors() {
                     <p>Floor ${floorCount - i}</p>
                 `;
     floorContainer.appendChild(floorEl);
+    const topFloor = document.querySelector(".top-floor-btn");
+
+    // topFloor.dataset.floor = ;
     handleBtnClick();
   }
   userInput.value = null;
 }
 
 function floorChange(targetFloor) {
-  reset();
+  let duration = 0;
   const elevatorEl = document.querySelector(".elevator");
   const currentFloor = +elevatorEl.dataset.currentfloor;
-  targetFloor = +targetFloor;
-  console.log(targetFloor, "target", currentFloor, "current");
-  if (targetFloor < 0) {
-    targetFloor = document.querySelectorAll(".floor-down").length;
-  }
+  if (!elevatorEl.classList.contains("busy")) {
+    elevatorEl.classList.add("busy");
+    duration =
+      (targetFloor - currentFloor) * 2 < -1
+        ? (targetFloor - currentFloor) * 2 * -1
+        : (targetFloor - currentFloor) * 2;
 
-  let duration = 0;
-
-  if (currentFloor < targetFloor) {
-    duration = (targetFloor - currentFloor) * 2;
+    elevatorEl.setAttribute("data-currentfloor", targetFloor);
+    elevatorEl.style.transition = `bottom ${duration}s linear`;
+    elevatorEl.style.bottom = targetFloor * 11.1 + "rem";
+    setTimeout(() => {
+      elevatorEl.classList.remove("busy");
+      console.log(queue);
+      if (queue.length) {
+        let queuedFloor = queue.shift();
+        floorChange(queuedFloor);
+      }
+    }, duration * 2000);
   } else {
-    duration = (currentFloor - targetFloor) * 2;
+    queue.push(targetFloor);
   }
-  console.log(duration, "1");
-  elevatorEl.setAttribute("data-currentfloor", targetFloor);
-  elevatorEl.style.transition = `bottom ${duration}s linear`;
-  elevatorEl.style.bottom = targetFloor * 11 + "rem";
 }
 
 function handleBtnClick() {
-  let up = document.querySelectorAll(".floor-up");
-  let down = document.querySelectorAll(".floor-down");
-
+  let up = document.querySelectorAll(".floor.floor-up");
+  let down = document.querySelectorAll(".floor.floor-down");
+  console.log(up);
   up.forEach((upBtn) => {
     upBtn.addEventListener("click", () => {
       let targetFloor = upBtn.dataset.floor;
@@ -73,11 +92,6 @@ function handleBtnClick() {
       floorChange(targetFloor);
     });
   });
-}
-
-function reset() {
-  const elevatorEl = document.querySelector(".elevator");
-  elevatorEl.setAttribute("data-currentfloor", 0);
 }
 
 /* Events*/

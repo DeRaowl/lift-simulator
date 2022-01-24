@@ -8,6 +8,7 @@
 body {
   font-family: "Poppins", sans-serif;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #e1a6ff;
@@ -23,6 +24,17 @@ body {
 
 header {
   margin: 2rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.github {
+  margin: 0 auto;
 }
 
 #user-input {
@@ -114,4 +126,8 @@ header {
   background-color: rgb(227, 128, 240);
   position: relative;
   /* top: 0px; */
+}
+
+footer {
+  margin-bottom: 2rem;
 }
