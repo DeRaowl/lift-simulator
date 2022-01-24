@@ -41,8 +41,6 @@ function addFloors() {
                 `;
     floorContainer.appendChild(floorEl);
     const topFloor = document.querySelector(".top-floor-btn");
-
-    // topFloor.dataset.floor = ;
     handleBtnClick();
   }
   userInput.value = null;
@@ -58,13 +56,12 @@ function floorChange(targetFloor) {
       (targetFloor - currentFloor) * 2 < -1
         ? (targetFloor - currentFloor) * 2 * -1
         : (targetFloor - currentFloor) * 2;
-
     elevatorEl.setAttribute("data-currentfloor", targetFloor);
     elevatorEl.style.transition = `bottom ${duration}s linear`;
     elevatorEl.style.bottom = targetFloor * 11.1 + "rem";
+
     setTimeout(() => {
       elevatorEl.classList.remove("busy");
-      console.log(queue);
       if (queue.length) {
         let queuedFloor = queue.shift();
         floorChange(queuedFloor);
@@ -78,7 +75,6 @@ function floorChange(targetFloor) {
 function handleBtnClick() {
   let up = document.querySelectorAll(".floor.floor-up");
   let down = document.querySelectorAll(".floor.floor-down");
-  console.log(up);
   up.forEach((upBtn) => {
     upBtn.addEventListener("click", () => {
       let targetFloor = upBtn.dataset.floor;

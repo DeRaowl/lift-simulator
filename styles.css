@@ -126,7 +126,7 @@ a {
   height: 100px;
   background-color: rgb(227, 128, 240);
   position: relative;
-  /* top: 0px; */
+  bottom: 0;
 }
 
 footer {
